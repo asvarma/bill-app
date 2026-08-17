@@ -1,0 +1,19 @@
+{
+  "key": "metal_fabrication",
+  "label": "Metal Fabrication / Welding",
+  "presets": [
+    { "description": "MS Pipe Fabrication", "unit": "kg", "defaultRate": 75 },
+    { "description": "MS Angle Fabrication", "unit": "kg", "defaultRate": 68 },
+    { "description": "MS Square Tube Fabrication", "unit": "kg", "defaultRate": 70 },
+    { "description": "MS Sheet Fabrication", "unit": "kg", "defaultRate": 72 },
+    { "description": "Welding Labour Charge", "unit": "day", "defaultRate": 900 },
+    { "description": "Labour Charge", "unit": "day", "defaultRate": 700 },
+    { "description": "Transport / Auto Charge", "unit": "trip", "defaultRate": 400 },
+    { "description": "Anchor Bolt (M12)", "unit": "nos", "defaultRate": 25 },
+    { "description": "Nut Bolt Set", "unit": "set", "defaultRate": 12 },
+    { "description": "Primer / Anti-Rust Paint", "unit": "sq.ft", "defaultRate": 18 },
+    { "description": "Grinding & Cutting Charge", "unit": "nos", "defaultRate": 40 },
+    { "description": "SS Railing Fabrication & Installation", "unit": "sq.ft", "defaultRate": 550 },
+    { "description": "Gate Fabrication & Installation", "unit": "sq.ft", "defaultRate": 400 }
+  ]
+}

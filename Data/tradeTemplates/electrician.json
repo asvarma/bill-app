@@ -1,0 +1,17 @@
+{
+  "key": "electrician",
+  "label": "Electrician",
+  "presets": [
+    { "description": "Concealed Wiring (Per Point)", "unit": "point", "defaultRate": 350 },
+    { "description": "Casing-Capping Wiring (Per Point)", "unit": "point", "defaultRate": 250 },
+    { "description": "Switch Board Installation", "unit": "nos", "defaultRate": 200 },
+    { "description": "MCB Distribution Box (4-Way)", "unit": "nos", "defaultRate": 1200 },
+    { "description": "MCB / RCCB Installation", "unit": "nos", "defaultRate": 150 },
+    { "description": "Ceiling Fan Installation", "unit": "nos", "defaultRate": 250 },
+    { "description": "Light Fitting Installation", "unit": "nos", "defaultRate": 150 },
+    { "description": "Geyser / AC Point Wiring", "unit": "point", "defaultRate": 600 },
+    { "description": "Earthing Work", "unit": "nos", "defaultRate": 1500 },
+    { "description": "Wiring Cable (1.5-2.5 sqmm)", "unit": "meter", "defaultRate": 25 },
+    { "description": "Electrician Labour Charge", "unit": "day", "defaultRate": 800 }
+  ]
+}

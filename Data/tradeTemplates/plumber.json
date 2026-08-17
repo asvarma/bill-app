@@ -1,0 +1,16 @@
+{
+  "key": "plumber",
+  "label": "Plumber",
+  "presets": [
+    { "description": "CPVC / PVC Pipe Fitting", "unit": "ft", "defaultRate": 45 },
+    { "description": "GI Pipe Fitting", "unit": "ft", "defaultRate": 60 },
+    { "description": "Tap / Fixture Installation", "unit": "nos", "defaultRate": 150 },
+    { "description": "Wash Basin Installation", "unit": "nos", "defaultRate": 400 },
+    { "description": "Western Commode Installation", "unit": "nos", "defaultRate": 600 },
+    { "description": "Drainage Line Work", "unit": "ft", "defaultRate": 70 },
+    { "description": "Water Tank Connection", "unit": "nos", "defaultRate": 1000 },
+    { "description": "Motor / Pump Installation", "unit": "nos", "defaultRate": 800 },
+    { "description": "Leakage Repair", "unit": "nos", "defaultRate": 300 },
+    { "description": "Plumbing Labour Charge", "unit": "day", "defaultRate": 800 }
+  ]
+}

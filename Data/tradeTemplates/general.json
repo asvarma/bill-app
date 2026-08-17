@@ -1,0 +1,11 @@
+{
+  "key": "general",
+  "label": "General",
+  "presets": [
+    { "description": "Material Supply", "unit": "nos", "defaultRate": 0 },
+    { "description": "Labour Charges", "unit": "day", "defaultRate": 700 },
+    { "description": "Transport Charges", "unit": "trip", "defaultRate": 400 },
+    { "description": "Service Charges", "unit": "nos", "defaultRate": 500 },
+    { "description": "Miscellaneous Charges", "unit": "nos", "defaultRate": 0 }
+  ]
+}

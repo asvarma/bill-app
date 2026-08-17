@@ -1,0 +1,15 @@
+{
+  "key": "carpenter",
+  "label": "Carpenter / Furniture",
+  "presets": [
+    { "description": "Plywood Cabinet Work", "unit": "sq.ft", "defaultRate": 950 },
+    { "description": "Modular Kitchen Cabinet", "unit": "sq.ft", "defaultRate": 1200 },
+    { "description": "Wardrobe Work", "unit": "sq.ft", "defaultRate": 1100 },
+    { "description": "Wooden Door Frame", "unit": "nos", "defaultRate": 3500 },
+    { "description": "Flush Door Installation", "unit": "nos", "defaultRate": 1500 },
+    { "description": "Laminate Finishing", "unit": "sq.ft", "defaultRate": 120 },
+    { "description": "Polish / Varnish Work", "unit": "sq.ft", "defaultRate": 60 },
+    { "description": "Hardware Fitting (Hinges, Channels)", "unit": "set", "defaultRate": 150 },
+    { "description": "Carpentry Labour Charge", "unit": "day", "defaultRate": 900 }
+  ]
+}
