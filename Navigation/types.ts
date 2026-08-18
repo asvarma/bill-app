@@ -17,7 +17,6 @@ export type RootStackParamList = {
   EditBusinessProfile: undefined;
   TradeTemplateSettings: undefined;
   InvoiceNumberingSettings: undefined;
-  Upgrade: undefined;
 };
 
 declare global {

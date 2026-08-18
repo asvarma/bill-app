@@ -20,17 +20,16 @@ interface MenuRowProps {
   label: string;
   hint?: string;
   onPress: () => void;
-  emphasize?: boolean;
 }
 
-function MenuRow({ label, hint, onPress, emphasize }: MenuRowProps) {
+function MenuRow({ label, hint, onPress }: MenuRowProps) {
   return (
     <Pressable style={styles.row} onPress={onPress}>
       <View style={styles.rowText}>
-        <Text style={[styles.rowLabel, emphasize ? styles.rowLabelEmphasis : null]}>{label}</Text>
+        <Text style={styles.rowLabel}>{label}</Text>
         {hint ? <Text style={styles.rowHint}>{hint}</Text> : null}
       </View>
-      <Text style={[styles.chevron, emphasize ? styles.rowLabelEmphasis : null]}>›</Text>
+      <Text style={styles.chevron}>›</Text>
     </Pressable>
   );
 }
@@ -89,11 +88,6 @@ export default function SettingsScreen() {
         />
       </Card>
 
-      <Text style={styles.sectionTitle}>Account</Text>
-      <Card padded={false}>
-        <MenuRow label="Upgrade to Pro" onPress={() => navigation.navigate('Upgrade')} emphasize />
-      </Card>
-
       <Text style={styles.sectionTitle}>Data Management</Text>
       <Card>
         <Button label="Reset App Data" variant="danger" onPress={confirmReset} loading={resetting} />
@@ -145,9 +139,6 @@ const styles = StyleSheet.create({
     fontSize: fontSize.lg,
     fontFamily: fontFamily.bodySemiBold,
     color: colors.textPrimary,
-  },
-  rowLabelEmphasis: {
-    color: colors.amberDark,
   },
   rowHint: {
     fontSize: fontSize.sm,

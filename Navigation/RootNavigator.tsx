@@ -14,7 +14,6 @@ import InvoiceDetailScreen from '../Screens/InvoiceDetailScreen';
 import EditBusinessProfileScreen from '../Screens/EditBusinessProfileScreen';
 import TradeTemplateSettingsScreen from '../Screens/TradeTemplateSettingsScreen';
 import InvoiceNumberingSettingsScreen from '../Screens/InvoiceNumberingSettingsScreen';
-import UpgradeScreen from '../Screens/UpgradeScreen';
 import { getBusiness } from '../Services/database';
 import { colors, fontFamily } from '../Theme/theme';
 
@@ -96,7 +95,6 @@ export default function RootNavigator() {
         component={InvoiceNumberingSettingsScreen}
         options={{ title: 'Invoice Numbering' }}
       />
-      <Stack.Screen name="Upgrade" component={UpgradeScreen} options={{ presentation: 'modal' }} />
     </Stack.Navigator>
   );
 }
