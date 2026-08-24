@@ -10,6 +10,7 @@ import Card from '../Components/Card';
 import type { MainTabParamList, RootStackParamList } from '../Navigation/types';
 import { resetDatabase } from '../Services/database';
 import { colors, fontFamily, fontSize, minTouchTarget, spacing } from '../Theme/theme';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 type SettingsScreenNavigationProp = CompositeNavigationProp<
   BottomTabNavigationProp<MainTabParamList, 'Settings'>,
@@ -37,6 +38,7 @@ function MenuRow({ label, hint, onPress }: MenuRowProps) {
 export default function SettingsScreen() {
   const navigation = useNavigation<SettingsScreenNavigationProp>();
   const db = useSQLiteContext();
+  const insets = useSafeAreaInsets();
   const [resetting, setResetting] = useState(false);
 
   function confirmReset() {
@@ -64,7 +66,7 @@ export default function SettingsScreen() {
   }
 
   return (
-    <ScrollView style={styles.flex} contentContainerStyle={styles.container}>
+    <ScrollView style={styles.flex} contentContainerStyle={[styles.container, { paddingBottom: spacing.xxl + spacing.lg + insets.bottom }]}>
       <Text style={styles.title}>Settings</Text>
 
       <Text style={styles.sectionTitle}>Business</Text>

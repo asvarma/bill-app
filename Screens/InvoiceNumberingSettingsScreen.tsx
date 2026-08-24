@@ -1,6 +1,7 @@
 import { useSQLiteContext } from 'expo-sqlite';
 import { useEffect, useState } from 'react';
 import { ActivityIndicator, StyleSheet, Text, TextInput, View } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import Button from '../Components/Button';
 import type { BusinessRow } from '../Data/types';
 import { getBusiness, updateInvoiceNumbering } from '../Services/database';
@@ -9,6 +10,7 @@ import { colors, fontFamily, fontSize, minTouchTarget, radius, spacing } from '.
 
 export default function InvoiceNumberingSettingsScreen() {
   const db = useSQLiteContext();
+  const insets = useSafeAreaInsets();
 
   const [loading, setLoading] = useState(true);
   const [business, setBusiness] = useState<BusinessRow | null>(null);
@@ -82,7 +84,7 @@ export default function InvoiceNumberingSettingsScreen() {
   }
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, { paddingBottom: spacing.xl + insets.bottom }]}>
       <Text style={styles.subtitle}>
         Controls the numbering for invoices you create from now on. Existing invoices keep their numbers.
       </Text>

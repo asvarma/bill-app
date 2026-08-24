@@ -5,9 +5,10 @@ import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useSQLiteContext } from 'expo-sqlite';
 import { useCallback, useState } from 'react';
 import { ActivityIndicator, Image, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 import Button from '../Components/Button';
 import Card from '../Components/Card';
+import StatusBadge from '../Components/StatusBadge';
 import type { BusinessRow, InvoiceRow } from '../Data/types';
 import type { MainTabParamList, RootStackParamList } from '../Navigation/types';
 import { getBusiness, getMonthlySummary, getRecentInvoices, MonthlySummary } from '../Services/database';
@@ -22,6 +23,7 @@ type HomeScreenNavigationProp = CompositeNavigationProp<
 export default function HomeScreen() {
   const navigation = useNavigation<HomeScreenNavigationProp>();
   const db = useSQLiteContext();
+  const insets = useSafeAreaInsets();
 
   const [loading, setLoading] = useState(true);
   const [business, setBusiness] = useState<BusinessRow | null>(null);
@@ -72,7 +74,7 @@ export default function HomeScreen() {
 
   return (
     <SafeAreaView style={styles.flex} edges={['top']}>
-      <ScrollView contentContainerStyle={styles.content}>
+      <ScrollView contentContainerStyle={[styles.content, { paddingBottom: spacing.xxl + spacing.lg + insets.bottom }]}>
         <View style={styles.header}>
           {business?.logo_uri ? <Image source={{ uri: business.logo_uri }} style={styles.logo} /> : null}
           <View>
@@ -116,7 +118,10 @@ export default function HomeScreen() {
                   </Text>
                   <Text style={styles.invoiceDate}>{formatDate(invoice.invoice_date)}</Text>
                 </View>
-                <Text style={styles.invoiceAmount}>{formatCurrency(invoice.total)}</Text>
+                <View style={styles.invoiceRowRight}>
+                  <Text style={styles.invoiceAmount}>{formatCurrency(invoice.total)}</Text>
+                  <StatusBadge status={invoice.status} />
+                </View>
               </Pressable>
             ))}
           </Card>
@@ -185,7 +190,7 @@ const styles = StyleSheet.create({
   },
   summaryDivider: {
     borderTopWidth: 1.5,
-    borderColor: 'rgba(250, 246, 239, 0.2)',
+    borderColor: 'rgba(247, 243, 239, 0.2)',
     borderStyle: 'dashed',
     marginTop: spacing.lg,
     marginBottom: spacing.md,
@@ -193,7 +198,7 @@ const styles = StyleSheet.create({
   summaryCount: {
     fontSize: fontSize.base,
     fontFamily: fontFamily.bodyRegular,
-    color: 'rgba(250, 246, 239, 0.7)',
+    color: 'rgba(247, 243, 239, 0.7)',
   },
   newInvoiceButton: {
     marginBottom: spacing.xxl + spacing.xs,
@@ -246,5 +251,9 @@ const styles = StyleSheet.create({
     fontSize: fontSize.lg,
     fontFamily: fontFamily.headingBold,
     color: colors.textPrimary,
+  },
+  invoiceRowRight: {
+    alignItems: 'flex-end',
+    gap: spacing.xs,
   },
 });

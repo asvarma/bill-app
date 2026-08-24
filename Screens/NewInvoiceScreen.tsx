@@ -22,6 +22,7 @@ import {
 import { calculateGST, isValidGSTIN } from '../Services/gst';
 import { formatCurrency, toLocalISODate } from '../Services/format';
 import { colors, fontFamily, fontSize, spacing } from '../Theme/theme';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'NewInvoice'>;
 
@@ -35,6 +36,7 @@ export default function NewInvoiceScreen({ route, navigation }: Props) {
   const invoiceId = route.params?.invoiceId;
   const isEditMode = invoiceId !== undefined;
   const db = useSQLiteContext();
+  const insets = useSafeAreaInsets();
 
   const [loadingBusiness, setLoadingBusiness] = useState(true);
   const [business, setBusiness] = useState<BusinessRow | null>(null);
@@ -310,7 +312,7 @@ export default function NewInvoiceScreen({ route, navigation }: Props) {
 
   return (
     <KeyboardAvoidingView style={styles.flex} behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
-      <ScrollView contentContainerStyle={styles.content} keyboardShouldPersistTaps="handled">
+      <ScrollView contentContainerStyle={[styles.content, { paddingBottom: spacing.xxl + spacing.lg + insets.bottom }]} keyboardShouldPersistTaps="handled">
         <Text style={styles.sectionTitle}>Party Details</Text>
         <FormInput
           label="Party Name"

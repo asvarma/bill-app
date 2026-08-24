@@ -9,12 +9,14 @@ import type { RootStackParamList } from '../Navigation/types';
 import { getBusinessById, getInvoiceById, getInvoiceItems } from '../Services/database';
 import { shareInvoicePdf } from '../Services/shareInvoice';
 import { colors, fontFamily, fontSize, spacing } from '../Theme/theme';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'InvoicePreview'>;
 
 export default function InvoicePreviewScreen({ route, navigation }: Props) {
   const { invoiceId } = route.params;
   const db = useSQLiteContext();
+  const insets = useSafeAreaInsets();
 
   const [loading, setLoading] = useState(true);
   const [loadError, setLoadError] = useState<string | null>(null);
@@ -71,6 +73,10 @@ export default function InvoicePreviewScreen({ route, navigation }: Props) {
     setSharing(false);
   }
 
+  function handleDone() {
+    navigation.reset({ index: 0, routes: [{ name: 'MainTabs' }] });
+  }
+
   if (loading) {
     return (
       <View style={styles.centered}>
@@ -88,7 +94,7 @@ export default function InvoicePreviewScreen({ route, navigation }: Props) {
   }
 
   return (
-    <ScrollView contentContainerStyle={styles.content}>
+    <ScrollView contentContainerStyle={[styles.content, { paddingBottom: spacing.xxl + spacing.lg + insets.bottom }]}>
       <InvoiceDocument business={business} invoice={invoice} items={items} />
 
       {shareError ? <Text style={styles.shareError}>{shareError}</Text> : null}
@@ -100,7 +106,15 @@ export default function InvoicePreviewScreen({ route, navigation }: Props) {
         style={styles.primaryButton}
       />
 
-      <Button label="Back to Edit" variant="secondary" onPress={() => navigation.goBack()} />
+      <View style={styles.rowActions}>
+        <Button
+          label="Back to Edit"
+          variant="secondary"
+          onPress={() => navigation.goBack()}
+          style={styles.rowButton}
+        />
+        <Button label="Done" onPress={handleDone} style={styles.rowButton} />
+      </View>
     </ScrollView>
   );
 }
@@ -131,5 +145,12 @@ const styles = StyleSheet.create({
   },
   primaryButton: {
     marginBottom: spacing.md,
+  },
+  rowActions: {
+    flexDirection: 'row',
+    gap: spacing.md,
+  },
+  rowButton: {
+    flex: 1,
   },
 });

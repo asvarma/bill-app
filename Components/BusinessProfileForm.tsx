@@ -11,6 +11,7 @@ import type { NewBusiness } from '../Services/database';
 import { isValidGSTIN } from '../Services/gst';
 import { isValidIndianMobileNumber } from '../Services/validation';
 import { colors, fontFamily, fontSize, radius, shadow, spacing } from '../Theme/theme';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 const TRADE_OPTIONS = tradeTemplates.map((trade) => ({ label: trade.label, value: trade.key }));
 
@@ -62,6 +63,7 @@ export default function BusinessProfileForm({
   submitLabel,
   onSubmit,
 }: BusinessProfileFormProps) {
+  const insets = useSafeAreaInsets();
   const [name, setName] = useState(initialValues?.name ?? '');
   const [mobileNumber, setMobileNumber] = useState(initialValues?.mobileNumber ?? '');
   const [gstin, setGstin] = useState(initialValues?.gstin ?? '');
@@ -127,7 +129,7 @@ export default function BusinessProfileForm({
 
   return (
     <KeyboardAvoidingView style={styles.flex} behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
-      <ScrollView contentContainerStyle={styles.content} keyboardShouldPersistTaps="handled">
+      <ScrollView contentContainerStyle={[styles.content, { paddingBottom: spacing.xxl + spacing.lg + insets.bottom }]} keyboardShouldPersistTaps="handled">
         {eyebrow ? <Text style={styles.eyebrow}>{eyebrow}</Text> : null}
         {title ? <Text style={styles.title}>{title}</Text> : null}
         {subtitle ? <Text style={styles.subtitle}>{subtitle}</Text> : null}
@@ -140,7 +142,7 @@ export default function BusinessProfileForm({
           value={name}
           onChangeText={setName}
           error={errors.name}
-          placeholder="e.g. NewStar Fabrication Works"
+          placeholder="Business Name"
         />
 
         <PhoneNumberInput

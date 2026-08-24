@@ -14,6 +14,7 @@ import {
 } from '../Services/database';
 import { formatCurrency } from '../Services/format';
 import { colors, fontFamily, fontSize, minTouchTarget, radius, spacing } from '../Theme/theme';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 interface PresetFormState {
   label: string;
@@ -25,6 +26,7 @@ const EMPTY_FORM: PresetFormState = { label: '', unit: '', rate: '' };
 
 export default function TradeTemplateSettingsScreen() {
   const db = useSQLiteContext();
+  const insets = useSafeAreaInsets();
 
   const [loading, setLoading] = useState(true);
   const [business, setBusiness] = useState<BusinessRow | null>(null);
@@ -152,7 +154,7 @@ export default function TradeTemplateSettingsScreen() {
       <FlatList
         data={presets}
         keyExtractor={(item) => String(item.id)}
-        contentContainerStyle={styles.listContent}
+        contentContainerStyle={[styles.listContent, { paddingBottom: spacing.xxl + minTouchTarget + insets.bottom }]}
         ListHeaderComponent={
           <Text style={styles.subtitle}>
             Quick-add presets shown on the New Invoice screen for your trade.
@@ -183,11 +185,15 @@ export default function TradeTemplateSettingsScreen() {
         }
       />
 
-      <Button label="+ Add Preset" onPress={openAddModal} style={styles.addButton} />
+      <Button
+        label="+ Add Preset"
+        onPress={openAddModal}
+        style={[styles.addButton, { bottom: spacing.xl + insets.bottom }]}
+      />
 
       <Modal visible={modalVisible} animationType="slide" transparent onRequestClose={() => setModalVisible(false)}>
         <View style={styles.modalBackdrop}>
-          <View style={styles.modalSheet}>
+          <View style={[styles.modalSheet, { paddingBottom: spacing.xxl + spacing.xs + insets.bottom }]}>
             <Text style={styles.modalTitle}>{editingId !== null ? 'Edit Preset' : 'Add Preset'}</Text>
 
             <Text style={styles.fieldLabel}>Description</Text>

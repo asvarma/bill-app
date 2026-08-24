@@ -14,7 +14,7 @@ import {
   TextInput,
   View,
 } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 import Button from '../Components/Button';
 import Card from '../Components/Card';
 import DatePickerField from '../Components/DatePickerField';
@@ -47,6 +47,7 @@ function daysAgo(date: Date, days: number): Date {
 export default function InvoiceListScreen() {
   const navigation = useNavigation<InvoiceListNavigationProp>();
   const db = useSQLiteContext();
+  const insets = useSafeAreaInsets();
 
   const [loading, setLoading] = useState(true);
   const [business, setBusiness] = useState<BusinessRow | null>(null);
@@ -165,7 +166,7 @@ export default function InvoiceListScreen() {
       <FlatList
         data={invoices}
         keyExtractor={(item) => String(item.id)}
-        contentContainerStyle={styles.listContent}
+        contentContainerStyle={[styles.listContent, { paddingBottom: spacing.xxl + spacing.lg + insets.bottom }]}
         renderItem={({ item }) => (
           <Pressable
             style={styles.row}
@@ -196,7 +197,7 @@ export default function InvoiceListScreen() {
 
       <Modal visible={filterVisible} animationType="slide" transparent onRequestClose={() => setFilterVisible(false)}>
         <View style={styles.modalBackdrop}>
-          <View style={styles.modalSheet}>
+          <View style={[styles.modalSheet, { paddingBottom: spacing.xxl + spacing.xs + insets.bottom }]}>
             <Text style={styles.modalTitle}>Filter by Date</Text>
 
             <View style={styles.presetRow}>

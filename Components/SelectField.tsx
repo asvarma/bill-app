@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react';
 import { FlatList, Modal, Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { colors, fontFamily, fontSize, minTouchTarget, radius, spacing } from '../Theme/theme';
 
 export interface SelectOption {
@@ -28,6 +29,7 @@ export default function SelectField({
 }: SelectFieldProps) {
   const [visible, setVisible] = useState(false);
   const [search, setSearch] = useState('');
+  const insets = useSafeAreaInsets();
 
   const selectedOption = options.find((option) => option.value === value);
 
@@ -63,7 +65,7 @@ export default function SelectField({
 
       <Modal visible={visible} animationType="slide" transparent onRequestClose={() => setVisible(false)}>
         <View style={styles.modalBackdrop}>
-          <View style={styles.modalSheet}>
+          <View style={[styles.modalSheet, { paddingBottom: spacing.xxl + insets.bottom }]}>
             <View style={styles.modalHeader}>
               <Text style={styles.modalTitle}>{label}</Text>
               <Pressable onPress={() => setVisible(false)} hitSlop={8}>

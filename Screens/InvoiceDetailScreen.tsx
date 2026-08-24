@@ -16,12 +16,14 @@ import {
 } from '../Services/database';
 import { shareInvoicePdf } from '../Services/shareInvoice';
 import { colors, fontFamily, fontSize, minTouchTarget, radius, spacing } from '../Theme/theme';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'InvoiceDetail'>;
 
 export default function InvoiceDetailScreen({ route, navigation }: Props) {
   const { invoiceId } = route.params;
   const db = useSQLiteContext();
+  const insets = useSafeAreaInsets();
 
   const [loading, setLoading] = useState(true);
   const [loadError, setLoadError] = useState<string | null>(null);
@@ -145,7 +147,7 @@ export default function InvoiceDetailScreen({ route, navigation }: Props) {
   const isPaid = invoice.status === 'paid';
 
   return (
-    <ScrollView contentContainerStyle={styles.content}>
+    <ScrollView contentContainerStyle={[styles.content, { paddingBottom: spacing.xxl + spacing.lg + insets.bottom }]}>
       <InvoiceDocument business={business} invoice={invoice} items={items} />
 
       {shareError ? <Text style={styles.shareError}>{shareError}</Text> : null}
