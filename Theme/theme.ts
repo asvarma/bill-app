@@ -1,13 +1,13 @@
-const paper = '#FAF6EF';
+const paper = '#F7F3EF';
 const surface = '#FFFFFF';
-const ink = '#22261F';
-const inkSecondary = '#6B6459';
-const amber = '#D97B2E';
-const amberDark = '#B8611D';
+const ink = '#17110E';
+const inkSecondary = '#6E6459';
+const amber = '#E4572E';
+const amberDark = '#CE3B11';
 const steelBlue = '#33526B';
 const steelSoft = '#E7EEF2';
 const success = '#3F7A5B';
-const border = '#E7E0D2';
+const border = '#E3DAD1';
 
 export const colors = {
   paper,
@@ -21,30 +21,30 @@ export const colors = {
   success,
   border,
 
-  amberSurface: '#F6E3CE',
-  amberBorder: '#EBC89C',
+  amberSurface: '#F4DED7',
+  amberBorder: '#EBB3A2',
   successSurface: '#E1EFE7',
   danger: '#C1473C',
   dangerSurface: '#F8E7E3',
-  borderStrong: '#D6CBB0',
-  textTertiary: '#A39C8C',
-  placeholder: '#A39C8C',
+  borderStrong: '#D1C2B1',
+  textTertiary: '#9A9086',
+  placeholder: '#9A9086',
   white: '#FFFFFF',
 
-  uploadBorder: '#C9BFA6',
-  uploadBackground: '#F2EDE1',
+  uploadBorder: '#C3B6A7',
+  uploadBackground: '#EDE9E3',
 
   primary: amber,
   primaryDark: amberDark,
-  primarySurface: '#F6E3CE',
-  primaryBorder: '#EBC89C',
+  primarySurface: '#F4DED7',
+  primaryBorder: '#EBB3A2',
   navy: ink,
   textPrimary: ink,
   textStrong: ink,
   textSecondary: inkSecondary,
   background: paper,
   warning: amber,
-  warningSurface: '#F6E3CE',
+  warningSurface: '#F4DED7',
 } as const;
 
 export const spacing = {
