@@ -1,6 +1,6 @@
 {
   "key": "general",
-  "label": "General",
+  "label": "Other Business",
   "presets": [
     { "description": "Material Supply", "unit": "nos", "defaultRate": 0 },
     { "description": "Labour Charges", "unit": "day", "defaultRate": 700 },

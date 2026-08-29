@@ -1,0 +1,11 @@
+{
+  "key": "electronics_shop",
+  "label": "Electronics / Mobile Shop",
+  "presets": [
+    { "description": "Mobile Accessories", "unit": "nos", "defaultRate": 0 },
+    { "description": "Screen Replacement", "unit": "nos", "defaultRate": 1500 },
+    { "description": "Repair Service", "unit": "nos", "defaultRate": 300 },
+    { "description": "Charger / Cable Sale", "unit": "nos", "defaultRate": 250 },
+    { "description": "Battery Replacement", "unit": "nos", "defaultRate": 800 }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "key": "hardware_store",
+  "label": "Hardware Store",
+  "presets": [
+    { "description": "Hardware Items", "unit": "nos", "defaultRate": 0 },
+    { "description": "Paint & Tools", "unit": "nos", "defaultRate": 0 },
+    { "description": "Plumbing Fittings", "unit": "nos", "defaultRate": 0 },
+    { "description": "Electrical Fittings", "unit": "nos", "defaultRate": 0 },
+    { "description": "Delivery Charges", "unit": "trip", "defaultRate": 100 }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "key": "retailer",
+  "label": "Retailer / Trader",
+  "presets": [
+    { "description": "Product Sale", "unit": "nos", "defaultRate": 0 },
+    { "description": "Bulk Order", "unit": "lot", "defaultRate": 0 },
+    { "description": "Delivery Charges", "unit": "trip", "defaultRate": 100 },
+    { "description": "Discount Adjustment", "unit": "nos", "defaultRate": 0 },
+    { "description": "Packing Charges", "unit": "nos", "defaultRate": 20 }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "key": "general_store",
+  "label": "General Store",
+  "presets": [
+    { "description": "Grocery Items", "unit": "nos", "defaultRate": 0 },
+    { "description": "Packaged Goods", "unit": "nos", "defaultRate": 0 },
+    { "description": "Daily Essentials", "unit": "nos", "defaultRate": 0 },
+    { "description": "Item Sale", "unit": "nos", "defaultRate": 0 },
+    { "description": "Delivery Charges", "unit": "trip", "defaultRate": 50 }
+  ]
+}

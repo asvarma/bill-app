@@ -20,7 +20,11 @@ const TRADE_CHIP_LABELS: Record<string, string> = {
   electrician: 'Electrician',
   plumber: 'Plumber',
   carpenter: 'Carpenter',
-  general: 'General',
+  general: 'Other Business',
+  general_store: 'General Store',
+  retailer: 'Retailer',
+  electronics_shop: 'Electronics',
+  hardware_store: 'Hardware',
 };
 const TRADE_CHIPS = tradeTemplates.map((trade) => ({
   key: trade.key,
